@@ -1,4 +1,77 @@
-.auth { max-width: 360px; margin: 120px auto; padding: 20px; background: #111; border-radius: 8px; text-align: center; color:#fff; box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
-.auth form { display:flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-.auth input { padding: 10px; border-radius: 6px; border: none; background:#222; color:#fff; }
-.auth button { padding: 10px; border-radius: 6px; background:#e50914; color:#fff; border:none; cursor:pointer; }
+/* Container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;                /* full height */
+  background: linear-gradient(180deg, #000 0%, #111 100%);
+  padding: 80px 20px 20px;          /* push below navbar */
+  box-sizing: border-box;
+  position: relative;               /* needed for top-right link */
+}
+
+/* Auth box */
+.auth-box {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.auth-box h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.auth-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-box input {
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.auth-box button {
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e50914;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-box button:hover {
+  background-color: #f40612;
+}
+
+/* Top-right corner link */
+.auth-top-right {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.auth-top-right a {
+  color: #e50914;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.auth-top-right a:hover {
+  text-decoration: underline;
+}

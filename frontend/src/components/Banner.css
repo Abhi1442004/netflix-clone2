@@ -1,7 +1,67 @@
-.banner { position: relative; height: 420px; background-size: cover; background-position: center; color: #fff; }
-.banner__contents { padding: 120px 30px 0 30px; max-width: 700px; }
-.banner__title { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
-.banner__buttons { margin: 10px 0; }
-.banner__btn { margin-right: 10px; padding: 8px 16px; border: none; background: rgba(255,255,255,0.9); color: #000; cursor: pointer; border-radius: 4px; }
-.banner__description { margin-top: 12px; max-width: 45rem; line-height: 1.3; opacity: 0.95; }
-.banner--fadeBottom { position: absolute; bottom: 0; width: 100%; height: 8rem; background-image: linear-gradient(180deg, transparent, rgba(17,17,17,1)); }
+.banner {
+  position: relative;
+  color: white;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner__contents {
+  z-index: 1;
+}
+
+.banner__title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.banner__description {
+  max-width: 70%;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show max 2 lines */
+  -webkit-box-orient: vertical;
+}
+
+.banner__buttons {
+  margin-top: 1rem;
+}
+
+.banner__button {
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding: 0.5rem 2rem;
+  margin-right: 1rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  transition: all 0.3s;
+}
+
+.banner__button:hover {
+  background-color: #e6e6e6;
+  color: #000;
+}
+
+.banner--fadeBottom {
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

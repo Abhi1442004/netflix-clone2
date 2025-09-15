@@ -1,10 +1,35 @@
-body {
-  background-color: #111;
-  margin: 0;
-  font-family: Arial, sans-serif;
+.searchResults {
+  color: white;
+  margin-left: 20px;
 }
 
-.App {
-  background-color: #111;
-  color: white;
+.searchResults h2 {
+  margin-bottom: 15px;
+}
+
+.row_posters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.row_posterContainer {
+  text-align: center;
+  width: 200px;
+}
+
+.row_poster {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  transition: transform 450ms;
+}
+
+.row_poster:hover {
+  transform: scale(1.08);
+}
+
+.movie_name {
+  font-size: 14px;
+  margin-top: 5px;
 }
