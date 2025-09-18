@@ -7,8 +7,16 @@ import authRoutes from "./routes/auth.js";
 dotenv.config();
 const app = express();
 
+// ✅ CORS setup
+app.use(cors({
+  origin: [
+    "http://localhost:5173",                    // local dev
+    "https://netflix-clone2-rho.vercel.app"     // deployed frontend
+  ],
+  credentials: true
+}));
+
 // Middlewares
-app.use(cors({ origin: process.env.CLIENT_ORIGIN })); // Allow your frontend origin
 app.use(express.json());
 
 // Routes
