@@ -11,27 +11,28 @@ const listRoutes = require('./routes/list');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// --- Middleware ---
+// Middleware
 app.use(express.json());
-app.use(
-  cors({
-    origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000',
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: process.env.CLIENT_ORIGIN || 'https://your-frontend-url.vercel.app', // replace with your frontend URL
+  credentials: true,
+}));
 
-// --- Routes ---
+// Test API route
+app.get('/api', (req, res) => {
+  res.json({ message: "Backend API is running ✅" });
+});
+
+// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/list', listRoutes);
 
-// --- DB + Server ---
-mongoose
-  .connect(process.env.MONGO_URL)
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('✅ Connected to MongoDB');
-    app.listen(PORT, () => console.log(`🚀 Server started on port ${PORT}`));
+    console.log("MongoDB connected ✅");
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
   })
-  .catch((err) => {
-    console.error('❌ MongoDB connection error:', err);
-    process.exit(1);
-  });
+  .catch(err => console.log(err));
