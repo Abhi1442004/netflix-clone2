@@ -1,12 +1,11 @@
-// src/api/api.js
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5001/api/auth"; // Your backend URL
+const BASE_URL = import.meta.env.VITE_API_BASE_URL; // Using .env for backend URL
 
 // Signup function
 export const signupUser = async (data) => {
   try {
-    const res = await axios.post(`${BASE_URL}/register`, data);
+    const res = await axios.post(`${BASE_URL}/auth/register`, data);
     return res.data;
   } catch (err) {
     return { success: false, message: err.response?.data?.message || err.message };
@@ -16,15 +15,15 @@ export const signupUser = async (data) => {
 // Login function
 export const loginUser = async (data) => {
   try {
-    const res = await axios.post(`${BASE_URL}/login`, data);
+    const res = await axios.post(`${BASE_URL}/auth/login`, data);
     return res.data;
   } catch (err) {
     return { success: false, message: err.response?.data?.message || err.message };
   }
 };
 
-// TMDB requests (if still needed)
-const API_KEY = "0049509d0b641c69988235d827abb751";
+// TMDB requests
+const API_KEY = import.meta.env.VITE_TMDB_KEY;
 const TMDB_BASE = "https://api.themoviedb.org/3";
 
 export const requests = {
@@ -37,7 +36,7 @@ export const requests = {
   fetchDocumentaries: `${TMDB_BASE}/discover/movie?api_key=${API_KEY}&with_genres=99`,
 };
 
-// Optional: function to fetch TMDB movies
+// Fetch TMDB movies
 export const fetchMovies = async (url) => {
   try {
     const response = await axios.get(url);
