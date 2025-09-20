@@ -7,31 +7,29 @@ import authRoutes from "./routes/auth.js";
 dotenv.config();
 const app = express();
 
-// ✅ CORS setup
+// ✅ Middleware
+app.use(express.json());
 app.use(cors({
   origin: [
-    "http://localhost:5173",                    // local dev
+    "http://localhost:5173",                    // local frontend
     "https://netflix-clone2-rho.vercel.app"     // deployed frontend
   ],
   credentials: true
 }));
 
-// Middlewares
-app.use(express.json());
+// ✅ Test route
+app.get("/", (req, res) => {
+  res.json({ message: "Backend is running ✅" });
+});
 
-// Routes
+// ✅ Routes
 app.use("/api/auth", authRoutes);
 
-// MongoDB connection
+// ✅ MongoDB connection
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch(err => console.error(err));
 
-// Test route
-app.get("/", (req, res) => {
-  res.json({ message: "Hello from backend ✅" });
-});
-
-// Start server
+// ✅ Start server
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
